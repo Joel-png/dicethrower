@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://mvxbl6j3mknf"]
+
+[ext_resource type="PackedScene" uid="uid://d4lp84thhdw2" path="res://dice.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://dqvqvqgmttuvl" path="res://player.tscn" id="2_fj7yv"]
+
+[sub_resource type="Environment" id="Environment_gv5m4"]
+background_energy_multiplier = 1.6
+sdfgi_enabled = true
+
+[sub_resource type="Compositor" id="Compositor_f3sb7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fj7yv"]
+absorbent = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
+size = Vector3(40, 0.1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+albedo_color = Color(0.444584, 0.167055, 0.302359, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
+material = SubResource("StandardMaterial3D_f3sb7")
+size = Vector3(40, 0.1, 40)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gv5m4")
+compositor = SubResource("Compositor_f3sb7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.785274, 0.410131, 0.46383, 0.155932, -0.855999, 0.492901, 0.599191, -0.314736, -0.736146, 0, 17.5744, -20.5944)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fj7yv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_aqk2v")
+
+[node name="Dice" parent="." instance=ExtResource("1_f3sb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42813, 0)
+mass = 0.1
+gravity_scale = 2.0
+minRandomForce = 20
+
+[node name="Player" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(2.02323, 0, 0, 0, 2.02323, 0, 0, 0, 2.02323, 0.164874, -4.76837e-07, 4.84451)
