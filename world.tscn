@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mvxbl6j3mknf"]
+[gd_scene load_steps=21 format=3 uid="uid://mvxbl6j3mknf"]
 
 [ext_resource type="PackedScene" uid="uid://dqvqvqgmttuvl" path="res://player.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://biwhjxscrn3rh" path="res://scenes/dice/dice_20.tscn" id="2_tlwt5"]
@@ -7,8 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cpqtsvia5yva8" path="res://scenes/dice/dice_8.tscn" id="5_ioo17"]
 [ext_resource type="PackedScene" uid="uid://28bh0sbljw8f" path="res://scenes/dice/dice_6.tscn" id="6_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cfhmfsl6m46on" path="res://scenes/dice/dice_4.tscn" id="7_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://wyscxv10eahp" path="res://scenes/dice/dice_100.tscn" id="8_gbfbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkg7o"]
+sky_top_color = Color(0.020318, 0.0303929, 0.0479327, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_angle_max = 16.67
 
 [sub_resource type="Sky" id="Sky_gbfbk"]
 sky_material = SubResource("ProceduralSkyMaterial_pkg7o")
@@ -17,20 +22,37 @@ sky_material = SubResource("ProceduralSkyMaterial_pkg7o")
 background_mode = 2
 background_energy_multiplier = 1.5
 sky = SubResource("Sky_gbfbk")
+sdfgi_enabled = true
+sdfgi_energy = 0.375
+glow_enabled = true
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ioo17"]
 
 [sub_resource type="Compositor" id="Compositor_f3sb7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fj7yv"]
-friction = 0.5
-absorbent = true
+friction = 0.9
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
 size = Vector3(80, 0.1, 80)
 
+[sub_resource type="Gradient" id="Gradient_gbfbk"]
+offsets = PackedFloat32Array(0.349206, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ioo17"]
+frequency = 0.1893
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wse8f"]
+width = 4096
+height = 4096
+color_ramp = SubResource("Gradient_gbfbk")
+noise = SubResource("FastNoiseLite_ioo17")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
 albedo_color = Color(0.444584, 0.167055, 0.302359, 1)
+metallic = 0.22
+metallic_specular = 0.0
+roughness_texture = SubResource("NoiseTexture2D_wse8f")
 
 [sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
 material = SubResource("StandardMaterial3D_f3sb7")
@@ -57,22 +79,31 @@ shape = SubResource("BoxShape3D_tlwt5")
 mesh = SubResource("BoxMesh_aqk2v")
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
-transform = Transform3D(2.02323, 0, 0, 0, 2.02323, 0, 0, 0, 2.02323, 0.164874, -4.76837e-07, 4.84451)
+transform = Transform3D(3.71434, 0, 0, 0, 3.71434, 0, 0, 0, 3.71434, 0.164874, -4.76837e-07, 4.84451)
 
 [node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425379, 0.844657, -4.98705)
+gravity_scale = 3.0
 
 [node name="dice_12" parent="." instance=ExtResource("3_pkg7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87761, 0.765208, -2.82909)
+gravity_scale = 3.0
 
 [node name="dice_10" parent="." instance=ExtResource("4_gbfbk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05277, 0.707043, -6.23375)
+gravity_scale = 3.0
 
 [node name="dice_8" parent="." instance=ExtResource("5_ioo17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52702, 0.627359, -0.321175)
+gravity_scale = 3.0
 
 [node name="dice_6" parent="." instance=ExtResource("6_wse8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19614, 0.65, -3.95625)
+gravity_scale = 3.0
 
 [node name="dice_4" parent="." instance=ExtResource("7_ic0uy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.379954, 1.05, -1.51152)
+gravity_scale = 3.0
+
+[node name="dice_11" parent="." instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4122, 1.02228, -5.58674)
