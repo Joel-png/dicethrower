@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfsh8wrl1hps7"
+path="res://.godot/imported/d20model.obj-d9e6c21f01faa807b4cba70d9f693575.mesh"
+
+[deps]
+
+files=["res://.godot/imported/d20model.obj-d9e6c21f01faa807b4cba70d9f693575.mesh"]
+
+source_file="res://models/dice/d20model.obj"
+dest_files=["res://.godot/imported/d20model.obj-d9e6c21f01faa807b4cba70d9f693575.mesh", "res://.godot/imported/d20model.obj-d9e6c21f01faa807b4cba70d9f693575.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

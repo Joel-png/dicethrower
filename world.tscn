@@ -1,35 +1,50 @@
-[gd_scene load_steps=9 format=3 uid="uid://mvxbl6j3mknf"]
+[gd_scene load_steps=17 format=3 uid="uid://mvxbl6j3mknf"]
 
-[ext_resource type="PackedScene" uid="uid://d4lp84thhdw2" path="res://dice.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://dqvqvqgmttuvl" path="res://player.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://biwhjxscrn3rh" path="res://scenes/dice/dice_20.tscn" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://rc7td04widld" path="res://scenes/dice/dice_12.tscn" id="3_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://f1jp2c742lk4" path="res://scenes/dice/dice_10.tscn" id="4_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://cpqtsvia5yva8" path="res://scenes/dice/dice_8.tscn" id="5_ioo17"]
+[ext_resource type="PackedScene" uid="uid://28bh0sbljw8f" path="res://scenes/dice/dice_6.tscn" id="6_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cfhmfsl6m46on" path="res://scenes/dice/dice_4.tscn" id="7_ic0uy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkg7o"]
+
+[sub_resource type="Sky" id="Sky_gbfbk"]
+sky_material = SubResource("ProceduralSkyMaterial_pkg7o")
 
 [sub_resource type="Environment" id="Environment_gv5m4"]
-background_energy_multiplier = 1.6
-sdfgi_enabled = true
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_gbfbk")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ioo17"]
 
 [sub_resource type="Compositor" id="Compositor_f3sb7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fj7yv"]
+friction = 0.5
 absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
-size = Vector3(40, 0.1, 40)
+size = Vector3(80, 0.1, 80)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
 albedo_color = Color(0.444584, 0.167055, 0.302359, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_aqk2v"]
 material = SubResource("StandardMaterial3D_f3sb7")
-size = Vector3(40, 0.1, 40)
+size = Vector3(80, 0.1, 80)
 
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gv5m4")
+camera_attributes = SubResource("CameraAttributesPhysical_ioo17")
 compositor = SubResource("Compositor_f3sb7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.785274, 0.410131, 0.46383, 0.155932, -0.855999, 0.492901, 0.599191, -0.314736, -0.736146, 0, 17.5744, -20.5944)
+transform = Transform3D(0.785274, 0.410131, 0.46383, 0.155932, -0.855999, 0.492901, 0.599191, -0.314736, -0.736146, 0, 0, 0)
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -41,11 +56,23 @@ shape = SubResource("BoxShape3D_tlwt5")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_aqk2v")
 
-[node name="Dice" parent="." instance=ExtResource("1_f3sb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42813, 0)
-mass = 0.1
-gravity_scale = 2.0
-minRandomForce = 20
-
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 transform = Transform3D(2.02323, 0, 0, 0, 2.02323, 0, 0, 0, 2.02323, 0.164874, -4.76837e-07, 4.84451)
+
+[node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425379, 0.844657, -4.98705)
+
+[node name="dice_12" parent="." instance=ExtResource("3_pkg7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87761, 0.765208, -2.82909)
+
+[node name="dice_10" parent="." instance=ExtResource("4_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05277, 0.707043, -6.23375)
+
+[node name="dice_8" parent="." instance=ExtResource("5_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52702, 0.627359, -0.321175)
+
+[node name="dice_6" parent="." instance=ExtResource("6_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19614, 0.65, -3.95625)
+
+[node name="dice_4" parent="." instance=ExtResource("7_ic0uy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.379954, 1.05, -1.51152)
