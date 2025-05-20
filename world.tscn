@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://mvxbl6j3mknf"]
+[gd_scene load_steps=20 format=3 uid="uid://mvxbl6j3mknf"]
 
 [ext_resource type="PackedScene" uid="uid://dqvqvqgmttuvl" path="res://player.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://biwhjxscrn3rh" path="res://scenes/dice/dice_20.tscn" id="2_tlwt5"]
@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://wyscxv10eahp" path="res://scenes/dice/dice_100.tscn" id="8_gbfbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkg7o"]
-sky_top_color = Color(0.020318, 0.0303929, 0.0479327, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+ground_curve = 0.101965
 sun_angle_max = 16.67
 
 [sub_resource type="Sky" id="Sky_gbfbk"]
@@ -25,8 +25,6 @@ sky = SubResource("Sky_gbfbk")
 sdfgi_enabled = true
 sdfgi_energy = 0.375
 glow_enabled = true
-
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ioo17"]
 
 [sub_resource type="Compositor" id="Compositor_f3sb7"]
 
@@ -62,7 +60,6 @@ size = Vector3(80, 0.1, 80)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gv5m4")
-camera_attributes = SubResource("CameraAttributesPhysical_ioo17")
 compositor = SubResource("Compositor_f3sb7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -70,6 +67,8 @@ transform = Transform3D(0.785274, 0.410131, 0.46383, 0.155932, -0.855999, 0.4929
 shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_fj7yv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -79,31 +78,34 @@ shape = SubResource("BoxShape3D_tlwt5")
 mesh = SubResource("BoxMesh_aqk2v")
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
-transform = Transform3D(3.71434, 0, 0, 0, 3.71434, 0, 0, 0, 3.71434, 0.164874, -4.76837e-07, 4.84451)
-
-[node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425379, 0.844657, -4.98705)
-gravity_scale = 3.0
-
-[node name="dice_12" parent="." instance=ExtResource("3_pkg7o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87761, 0.765208, -2.82909)
-gravity_scale = 3.0
-
-[node name="dice_10" parent="." instance=ExtResource("4_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05277, 0.707043, -6.23375)
-gravity_scale = 3.0
-
-[node name="dice_8" parent="." instance=ExtResource("5_ioo17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52702, 0.627359, -0.321175)
-gravity_scale = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164874, -4.76837e-07, 4.84451)
 
 [node name="dice_6" parent="." instance=ExtResource("6_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19614, 0.65, -3.95625)
-gravity_scale = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26936, 1.36972, -3.16589)
+
+[node name="dice_7" parent="." instance=ExtResource("6_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933369, -5.23853)
+
+[node name="dice_8" parent="." instance=ExtResource("6_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17419, 0.979194, 0)
+
+[node name="dice_9" parent="." instance=ExtResource("6_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48725, 1.26938, 0)
+
+[node name="dice_10" parent="." instance=ExtResource("5_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55412, 1.77564, -3.58083)
 
 [node name="dice_4" parent="." instance=ExtResource("7_ic0uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.379954, 1.05, -1.51152)
-gravity_scale = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13023, 1.69299, 4.50565)
 
-[node name="dice_11" parent="." instance=ExtResource("8_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4122, 1.02228, -5.58674)
+[node name="dice_11" parent="." instance=ExtResource("4_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69336, 1.70914, -3.55361)
+
+[node name="dice_12" parent="." instance=ExtResource("3_pkg7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4864, 1.62673, 0)
+
+[node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94552, 1.56484, 0)
+
+[node name="dice_13" parent="." instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.91757, 1.39262, 0)

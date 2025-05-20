@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Dice
 
 @export var minRandomForce = 25
 @export var maxRandomForce = 50
@@ -10,9 +11,9 @@ func _physics_process(delta: float) -> void:
 	if !isMoving:
 		apply_torque(Vector3(0.01, 0.01, 0.01))
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed:
-		roll_dice()
+##func _unhandled_input(event):
+	##if event is InputEventMouseButton and event.pressed:
+		##roll_dice()
 
 func roll_dice():
 	if isMoving: 

@@ -37,6 +37,7 @@ var is_focus = false
 
 #inventory
 
+var clicking = false
 
 @onready var debug0 = $PlayerHead/Camera3D/DebugLabel0
 @onready var debug1 = $PlayerHead/Camera3D/DebugLabel1
@@ -56,6 +57,12 @@ func _unhandled_input(event) -> void:
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _process(delta: float) -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not clicking:
+		clicking = true
+		looking_at_dice()
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and clicking:
+		clicking = false
+	
 	if Input.is_action_just_pressed("Escape"):
 		if is_focus:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -128,3 +135,11 @@ func get_what_look_at() -> Vector3:
 			return camera_cast.get_collision_point()
 	var forward_direction: Vector3 = -camera_cast.global_transform.basis.z.normalized()
 	return camera_cast.global_transform.origin + forward_direction * 100
+
+func looking_at_dice():
+	if looking_at() is Dice:
+		looking_at().roll_dice()
+		
+func looking_at():
+	if camera_cast.get_collider():
+		return camera_cast.get_collider()

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dwum50vgvvoug"]
 
-[ext_resource type="Texture2D" uid="uid://crfmpm4c2f6ys" path="res://images/sorakadice.png" id="1_dsw33"]
+[ext_resource type="Texture2D" uid="uid://npjb58sk81ha" path="res://images/ashedice.png" id="1_dsw33"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qxvm7"]
 frequency = 0.2505
