@@ -15,6 +15,11 @@ func _ready():
 	get_tree().get_root().files_dropped.connect(_on_files_dropped)
 	update_grad_color()
 	DirAccess.make_dir_recursive_absolute("user://saved_dice")
+	DirAccess.make_dir_recursive_absolute("user://save_data")
+	var path_for_load = read_text_file("user://save_data//most_recent_dice.txt")
+	if path_for_load != "":
+		load_json_to_dic(path_for_load)
+	
 
 func _on_files_dropped(files):
 	var path = files[0]
@@ -37,20 +42,6 @@ func select_correct_material(texture):
 func update_material_with_texture(material_to_update, texture) -> void:
 	print(current_path)
 	material_to_update.albedo_texture = texture
-
-func check_hovered():
-	for rect in droppable_rects:
-		if mouse_over_control(rect):
-			return(rect.name)
-
-func mouse_over_control(node: Control):
-	var mouse = get_global_mouse_position()
-	if mouse.x < node.global_position.x \
-		or mouse.x > node.global_position.x + node.size.x \
-		or mouse.y < node.global_position.y \
-		or mouse.y > node.global_position.y + node.size.y:
-		return false
-	return true
 
 func update_grad_color():
 	var texture = generate_vertical_gradient_texture(color1.color, color2.color, 1, 256)
@@ -102,17 +93,30 @@ func save_dice(save_name):
 		"gradient_bottom": color2.color
 	}
 	
-	var file = FileAccess.open("user://saved_dice//" + save_name + ".json", FileAccess.WRITE)
+	var json_path = "user://saved_dice//" + save_name + ".json"
+	var file = FileAccess.open(json_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
-
+	load_json_to_dic(json_path)
+	
 func load_dice(json_data):
 	current_path = json_data["current_path"]
 	color1.color = parse_color_string(json_data["gradient_top"])
 	color2.color = parse_color_string(json_data["gradient_bottom"])
 	update_grad_color()
 	load_path(current_path)
-	
+	set_most_recent_dice(current_path.get_basename() + ".json")
+
+func set_most_recent_dice(dice_name):
+	var path = "user://save_data//most_recent_dice.txt"
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		file.store_string(dice_name)
+		file.close()
+		print("File saved successfully at: ", path)
+	else:
+		print("Failed to save file.")
+
 func parse_color_string(color_string: String) -> Color:
 	# Remove parentheses and split
 	var parts = color_string.strip_edges().trim_prefix("(").trim_suffix(")").split(",")
@@ -143,7 +147,7 @@ func _on_save_pressed() -> void:
 func _on_load_pressed() -> void:
 	file_dialog.popup_centered()
 
-func _on_file_dialog_file_selected(path: String) -> void:
+func load_json_to_dic(path):
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_error("Failed to open file.")
@@ -158,6 +162,18 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		push_error("Invalid JSON format.")
 		
 	load_dice(data)
+	
+func read_text_file(file_path: String) -> String:
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	if file:
+		var content = file.get_as_text()
+		file.close()
+		return content
+	else:
+		print("Failed to open file at:", file_path)
+		return ""
+func _on_file_dialog_file_selected(path: String) -> void:
+	load_json_to_dic(path)
 
 func _on_save_dialog_file_selected(path: String) -> void:
 	var file_name = save_dialog.current_file.get_file()

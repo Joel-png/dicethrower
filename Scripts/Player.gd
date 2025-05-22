@@ -26,6 +26,10 @@ var rng = RandomNumberGenerator.new()
 
 var is_focus = false
 
+@export var zoom_in_value = 30.0
+@export var zoom_out_value = 75.0
+@export var zoom_duration := 0.125
+@export var zoom_curve: Curve
 
 @onready var head = $PlayerHead
 @onready var camera = $PlayerHead/Camera3D
@@ -38,6 +42,11 @@ var is_focus = false
 #inventory
 
 var clicking = false
+var right_clicking = false
+var zoom_timer := 0.0
+var is_zooming_in := false
+var zoom_from = 70.0
+var zoom_to = 70.0
 
 @onready var debug0 = $PlayerHead/Camera3D/DebugLabel0
 @onready var debug1 = $PlayerHead/Camera3D/DebugLabel1
@@ -57,11 +66,31 @@ func _unhandled_input(event) -> void:
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not clicking:
-		clicking = true
-		looking_at_dice()
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and clicking:
-		clicking = false
+	if is_focus:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not clicking:
+			clicking = true
+			looking_at_dice()
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and clicking:
+			clicking = false
+			
+	if is_focus:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not right_clicking:
+			right_clicking = true
+			zoom_timer = 0.0
+			zoom_from = camera.fov
+			zoom_to = zoom_in_value
+			
+		elif not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and right_clicking:
+			right_clicking = false
+			zoom_timer = 0.0
+			zoom_from = camera.fov
+			zoom_to = zoom_out_value
+	
+	if zoom_timer < zoom_duration:
+		zoom_timer += delta
+		var t = zoom_timer / zoom_duration
+		var eased_t = zoom_curve.sample(t)
+		camera.fov = lerp(zoom_from, zoom_to, eased_t)
 	
 	if Input.is_action_just_pressed("Escape"):
 		if is_focus:
