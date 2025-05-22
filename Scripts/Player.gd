@@ -33,7 +33,7 @@ var is_focus = false
 @onready var crosshair = $PlayerHead/Camera3D/Crosshair
 @onready var animation_player = $AnimationPlayer
 
-@onready var player_manager = $".."
+@onready var UI = $PlayerHead/Camera3D/UI
 
 #inventory
 
@@ -67,9 +67,11 @@ func _process(delta: float) -> void:
 		if is_focus:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			is_focus = false
+			UI.show()
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			is_focus = true
+			UI.hide()
 		
 	# movement
 	input_dir = Input.get_vector("left", "right", "up", "down")
@@ -125,8 +127,8 @@ func _process(delta: float) -> void:
 		velocity = velocity + (transform.basis * movement) * delta
 	move_and_slide()
 	#holdable.action(delta)
-	debug0.text = str(rad_to_deg(camera.rotation.x)) + "\n " + str(velocity) + "\n " + str(global_position)
-	debug1.text = str(Engine.get_frames_per_second()) + " " + str(1.0/(get_process_delta_time()))
+	#debug0.text = str(rad_to_deg(camera.rotation.x)) + "\n " + str(velocity) + "\n " + str(global_position)
+	debug1.text = str(Engine.get_frames_per_second())# + " " + str(1.0/(get_process_delta_time()))
 	
 func get_what_look_at() -> Vector3:
 	# if point to shoot at is too close bullets will go to the side | if point isn't in raycast

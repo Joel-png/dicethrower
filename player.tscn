@@ -70,15 +70,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
 fov = 70.0
 
 [node name="DebugLabel0" type="Label" parent="PlayerHead/Camera3D"]
+visible = false
 offset_right = 241.0
 offset_bottom = 90.0
 text = "Text"
 metadata/_edit_use_anchors_ = true
 
 [node name="DebugLabel1" type="Label" parent="PlayerHead/Camera3D"]
-offset_top = 175.0
 offset_right = 241.0
-offset_bottom = 265.0
+offset_bottom = 90.0
 text = "Text"
 metadata/_edit_use_anchors_ = true
 

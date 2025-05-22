@@ -7,9 +7,10 @@ class_name Dice
 var isMoving = false
 
 func _physics_process(delta: float) -> void:
-	isMoving = linear_velocity.length() > 0.1
+	isMoving = linear_velocity.length() > 0.1 + delta * 0
 	if !isMoving:
 		apply_torque(Vector3(0.01, 0.01, 0.01))
+	
 
 ##func _unhandled_input(event):
 	##if event is InputEventMouseButton and event.pressed:

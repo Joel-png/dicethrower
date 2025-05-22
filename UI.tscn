@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c28c58lg7kw60"]
+[gd_scene load_steps=2 format=3 uid="uid://c28c58lg7kw60"]
+
+[ext_resource type="Script" uid="uid://dekm4asddfu4o" path="res://Scripts/ui.gd" id="1_b3bc3"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -7,3 +9,87 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_b3bc3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 793.0
+offset_right = 833.0
+offset_bottom = 40.0
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 5.0
+offset_right = 243.0
+offset_bottom = 36.0
+button_pressed = true
+action_mode = 0
+text = "Switch inner color"
+
+[node name="Color1" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 338.0
+offset_bottom = 444.0
+scale = Vector2(0.734357, 0.722126)
+edit_alpha = false
+sampler_visible = false
+color_modes_visible = false
+presets_visible = false
+
+[node name="Color2" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 40.0001
+offset_top = 349.0
+offset_right = 338.0
+offset_bottom = 753.0
+scale = Vector2(0.734357, 0.722126)
+edit_alpha = false
+sampler_visible = false
+color_modes_visible = false
+presets_visible = false
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 14.0
+offset_right = 332.0
+offset_bottom = 45.0
+text = "Save"
+
+[node name="Load" type="Button" parent="."]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 14.0
+offset_right = 392.0
+offset_bottom = 45.0
+text = "Load"
+
+[node name="LoadDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+root_subfolder = "saved_dice"
+filters = PackedStringArray("*.json")
+use_native_dialog = true
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+access = 1
+root_subfolder = "saved_dice"
+filters = PackedStringArray("*.json")
+use_native_dialog = true
+
+[connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="color_changed" from="Color1" to="." method="_on_color_1_color_changed"]
+[connection signal="color_changed" from="Color2" to="." method="_on_color_2_color_changed"]
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
+[connection signal="file_selected" from="LoadDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="confirmed" from="SaveDialog" to="." method="_on_save_dialog_confirmed"]
+[connection signal="file_selected" from="SaveDialog" to="." method="_on_save_dialog_file_selected"]
