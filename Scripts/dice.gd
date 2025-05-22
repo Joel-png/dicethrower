@@ -1,17 +1,32 @@
 extends RigidBody3D
 class_name Dice
 
+var sound_list = [
+	preload("res://sounds/dicehit01.wav"),
+	preload("res://sounds/dicehit02.wav"),
+	preload("res://sounds/dicehit03.wav"),
+	preload("res://sounds/dicehit04.wav")
+]
+@onready var audioStreamPlayer = $AudioStreamPlayer3D
 @export var minRandomForce = 25
 @export var maxRandomForce = 50
 
 var isMoving = false
 
+func _ready() -> void:
+	self.connect("body_entered", Callable(self, "play_hit_sound"))
+	
 func _physics_process(delta: float) -> void:
 	isMoving = linear_velocity.length() > 0.1 + delta * 0
 	if !isMoving:
 		apply_torque(Vector3(0.01, 0.01, 0.01))
 	
-
+func play_hit_sound(_body: Node):
+	print("playing sound")
+	var random_sound = sound_list[randi() % sound_list.size()]
+	audioStreamPlayer.stream = random_sound
+	audioStreamPlayer.play()
+	
 ##func _unhandled_input(event):
 	##if event is InputEventMouseButton and event.pressed:
 		##roll_dice()

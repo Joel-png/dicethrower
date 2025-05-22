@@ -80,32 +80,26 @@ mesh = SubResource("BoxMesh_aqk2v")
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164874, -4.76837e-07, 4.84451)
 
-[node name="dice_6" parent="." instance=ExtResource("6_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26936, 1.36972, -3.16589)
-
-[node name="dice_7" parent="." instance=ExtResource("6_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933369, -5.23853)
-
-[node name="dice_8" parent="." instance=ExtResource("6_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17419, 0.979194, 0)
-
-[node name="dice_9" parent="." instance=ExtResource("6_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48725, 1.26938, 0)
-
-[node name="dice_10" parent="." instance=ExtResource("5_ioo17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55412, 1.77564, -3.58083)
+[node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87412, 0)
 
 [node name="dice_4" parent="." instance=ExtResource("7_ic0uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13023, 1.69299, 4.50565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18897, 1.05, -2.68205)
 
-[node name="dice_11" parent="." instance=ExtResource("4_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69336, 1.70914, -3.55361)
+[node name="dice_6" parent="." instance=ExtResource("6_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68423, 0.66412, 1.08747)
+
+[node name="dice_8" parent="." instance=ExtResource("5_ioo17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32503, 0.627359, -1.31568)
+
+[node name="dice_10" parent="." instance=ExtResource("4_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99207, 0.707043, -0.871388)
 
 [node name="dice_12" parent="." instance=ExtResource("3_pkg7o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4864, 1.62673, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9293, 0.765208, 3.60421)
 
-[node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94552, 1.56484, 0)
+[node name="dice 21" parent="." instance=ExtResource("2_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6546, 0.844658, 2.64097)
 
-[node name="dice_13" parent="." instance=ExtResource("8_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.91757, 1.39262, 0)
+[node name="dice_11" parent="." instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7532, 0.707043, -1.74796)

@@ -92,6 +92,8 @@ shadow_mesh = SubResource("ArrayMesh_cnj7h")
 mass = 0.1
 physics_material_override = ExtResource("1_f6538")
 gravity_scale = 4.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_vppk8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -102,5 +104,7 @@ shape = SubResource("ConvexPolygonShape3D_vppk8")
 
 [node name="d12" parent="d122" index="0"]
 mesh = SubResource("ArrayMesh_ebuuj")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [editable path="d122"]
