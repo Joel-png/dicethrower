@@ -7,6 +7,12 @@ var sound_list = [
 	preload("res://sounds/dicehit03.wav"),
 	preload("res://sounds/dicehit04.wav")
 ]
+var ground_sound_list = [
+	preload("res://sounds/groundhit01.wav"),
+	preload("res://sounds/groundhit02.wav"),
+	preload("res://sounds/groundhit03.wav"),
+	preload("res://sounds/groundhit04.wav")
+]
 @onready var audioStreamPlayer = $AudioStreamPlayer3D
 @export var minRandomForce = 25
 @export var maxRandomForce = 50
@@ -21,9 +27,13 @@ func _physics_process(delta: float) -> void:
 	if !isMoving:
 		apply_torque(Vector3(0.01, 0.01, 0.01))
 	
-func play_hit_sound(_body: Node):
+func play_hit_sound(body: Node):
 	print("playing sound")
-	var random_sound = sound_list[randi() % sound_list.size()]
+	var random_sound
+	if body is Dice:
+		random_sound = sound_list[randi() % sound_list.size()]
+	else:
+		random_sound = ground_sound_list[randi() % ground_sound_list.size()]
 	audioStreamPlayer.stream = random_sound
 	audioStreamPlayer.play()
 	

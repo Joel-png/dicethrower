@@ -78,7 +78,7 @@ shape = SubResource("BoxShape3D_tlwt5")
 mesh = SubResource("BoxMesh_aqk2v")
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164874, -4.76837e-07, 4.84451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164874, 2.45785, 4.84451)
 
 [node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87412, 0)
