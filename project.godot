@@ -63,4 +63,5 @@ input_texture={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=2
+global_illumination/sdfgi/frames_to_update_lights=4
 anti_aliasing/quality/screen_space_aa=1
