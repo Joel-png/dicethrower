@@ -29,8 +29,9 @@ extends GPUParticles3D
 
 func _process(delta):
 	if player != null:
-		position.x = player.position.x
-		position.z = player.position.z
+		pass
+		#position.x = player.position.x
+		#position.z = player.position.z
 	_update_parameters()
 	
 func _update_parameters():

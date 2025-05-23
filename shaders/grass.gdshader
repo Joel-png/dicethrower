@@ -43,6 +43,7 @@ uniform vec2 map_heightmap_size = vec2(2000.0, 2000.0);
 uniform vec2 map_normalmap_size = vec2(2000.0, 2000.0);
 uniform sampler2D map_clumpmap;
 uniform float noise_size = 1000.0;
+uniform float mask_size;
 
 float get_height(vec2 pos) {
 	pos -= map_heightmap_size/2.0 * size_difference_of_world;//med_offset + 1.0;
@@ -60,6 +61,12 @@ float get_clumps(vec2 pos) {
 	pos -= 0.5 * map_heightmap_size;
 	pos /= map_heightmap_size;
 	return 100.0 * texture(map_clumpmap, pos).r;
+}
+
+float get_mask(vec2 pos) {
+	pos -= 64.0/2.0 * mask_size;
+	pos /= 64.0 * mask_size;
+	return texture(_grassmask, pos).r;
 }
 
 void start() {	
@@ -131,11 +138,11 @@ void process() {
 	basis[3].x = pos.x; 
 	basis[3].z = pos.z;
 	// displace grass depending on the mask
-	basis[3].y += 10000.0 * (1.0 - step(0.5,texture(_grassmask,pos.xz).r)) * float(use_mask); 
-	
-	if (distance(vec2(basis[3].x, basis[3].z), player_position) > 1.0) {
-		//basis[3].y += 10000.0;
+	if (get_mask(pos.xz) < 0.1) {
+		pos.y -= 10000.0 * float(use_mask); 
 	}
+	
+	
 	// rotate wind_dir in the Y axis
 	vec3 wind_dir = mat3(rotation3d(vec3(0,1,0),radians(wind_angle))) * vec3(1,0,0); 
 	// wind texture displaced by wind direction * wind speed
