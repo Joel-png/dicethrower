@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c65dvnvklxb7a"]
+
+[ext_resource type="PackedScene" uid="uid://dhghimsft7oyj" path="res://models/dice/frog.glb" id="1_46glj"]
+
+[node name="frog" instance=ExtResource("1_46glj")]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgwvcx02bxitn"]
+
+[ext_resource type="Script" uid="uid://fhwhok6061h5" path="res://Scripts/frog.gd" id="1_ev4im"]
+[ext_resource type="PackedScene" uid="uid://c65dvnvklxb7a" path="res://scenes/nature stuff/frog_base.tscn" id="2_nyfcg"]
+[ext_resource type="Script" uid="uid://caxwtx21qff0q" path="res://addons/jigglebones/jigglebone.gd" id="3_ensr1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sw2pc"]
+radius = 0.585786
+height = 2.06266
+
+[node name="Frog" type="RigidBody3D"]
+mass = 0.4
+gravity_scale = 4.0
+script = ExtResource("1_ev4im")
+twerk_speed = 10.89
+twerk_amount = 0.24
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_sw2pc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_sw2pc")
+
+[node name="frog" parent="." instance=ExtResource("2_nyfcg")]
+
+[node name="Jigglebone" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="1"]
+transform = Transform3D(0.851189, 0.274582, -0.447306, -0.52486, 0.444864, -0.725684, -0.000269532, 0.852467, 0.522781, 0.678307, 1.10229, -0.523099)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "ER"
+stiffness = 0.1
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone3" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="2"]
+transform = Transform3D(0.850787, 0.27445, -0.448149, -0.52551, 0.444651, -0.725345, 0.000198975, 0.852621, 0.52253, 0.678308, 1.10229, -0.523098)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "ER"
+stiffness = 0.1
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone2" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="3"]
+transform = Transform3D(0.851229, 0.274293, 0.447405, -0.524793, 0.445203, 0.725525, -0.000179574, -0.852383, 0.522917, -0.216546, -0.348826, -0.522762)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "EL"
+stiffness = 0.1
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone_TOP" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="4"]
+transform = Transform3D(0.270864, 0.962618, 0.000315727, -0.962618, 0.270864, 3.85126e-05, -4.84461e-05, -0.000314356, 1, -9.13816e-08, 0.311737, -1)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "TOP"
+stiffness = 0.2
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone5" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="5"]
+transform = Transform3D(0.224768, 0.54959, -0.80463, 0.74081, -0.632808, -0.225289, -0.632993, -0.54544, -0.549377, 1.07841, 0.00189222, 0.275729)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "FL"
+stiffness = 0.2
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone6" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="6"]
+transform = Transform3D(0.765401, 0.549699, -0.334652, 0.119658, -0.632498, -0.765263, -0.632331, 0.54569, -0.549891, 0.609386, 0.541971, 0.823391)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "FR"
+stiffness = 0.2
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone7" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="7"]
+transform = Transform3D(-0.223713, -0.54521, -0.807897, 0.739353, -0.63503, 0.223818, -0.635067, -0.54725, 0.545167, 0.532908, -0.44679, -0.818769)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "BL"
+stiffness = 0.2
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="Jigglebone8" type="Node3D" parent="frog/Armature_001/Skeleton3D" index="8"]
+transform = Transform3D(-0.764884, -0.546773, -0.340575, 0.112602, -0.634053, 0.765047, -0.63425, 0.546824, 0.546545, 0.0668656, -0.988024, -0.272858)
+top_level = true
+script = ExtResource("3_ensr1")
+bone_name = "BR"
+stiffness = 0.2
+metadata/_custom_type_script = "uid://caxwtx21qff0q"
+
+[node name="top" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55206, 0)
+
+[node name="bottom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.560464, 0)
+
+[editable path="frog"]

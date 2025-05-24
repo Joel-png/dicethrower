@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	isMoving = linear_velocity.length() > 0.1 + delta * 0
 	if !isMoving:
 		apply_torque(Vector3(0.01, 0.01, 0.01))
+		if Input.is_action_just_pressed("tab"):
+			roll_dice()
 	
 func play_hit_sound(body: Node):
 	#print("playing sound")

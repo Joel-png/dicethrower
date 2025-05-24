@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://mvxbl6j3mknf"]
+[gd_scene load_steps=50 format=4 uid="uid://mvxbl6j3mknf"]
 
 [ext_resource type="Script" uid="uid://y2vmkuevio53" path="res://world.gd" id="1_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://dqvqvqgmttuvl" path="res://player.tscn" id="2_fj7yv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cyif0w5pcgstk" path="res://Scripts/GPUParticles3D.gd" id="13_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://citxnm2ld1ghk" path="res://images/test.png" id="14_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://bj2y0diu38i33" path="res://campfire.tscn" id="18_ikiii"]
+[ext_resource type="PackedScene" uid="uid://bgwvcx02bxitn" path="res://scenes/nature stuff/frog_ragdoll.tscn" id="19_cbp6q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pkg7o"]
 ground_bottom_color = Color(0, 0, 0, 1)
@@ -85,6 +86,24 @@ size = Vector3(64, 30, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikiii"]
 size = Vector3(8, 30, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbp6q"]
+size = Vector3(8, 30, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26xuy"]
+size = Vector3(8, 30, 32)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ikiii"]
+height = 8.72314
+radius = 7.28809
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cbp6q"]
+height = 8.72314
+radius = 4.54834
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_26xuy"]
+height = 8.72314
+radius = 5.51025
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikiii"]
 albedo_color = Color(0.350088, 0.508492, 0.869463, 1)
@@ -577,6 +596,34 @@ shape = SubResource("BoxShape3D_ikiii")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4489, 0, -1.97878)
 shape = SubResource("BoxShape3D_ikiii")
 
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.630473, 0, 0.776211, 0, 1, 0, -0.776211, 0, 0.630473, -23.2784, 0, 22.3476)
+shape = SubResource("BoxShape3D_cbp6q")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(-0.803348, 0, 0.59551, 0, 1, 0, -0.59551, 0, -0.803348, 24.6518, 0, 27.0949)
+shape = SubResource("BoxShape3D_26xuy")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(-0.850049, 0, -0.526704, 0, 1, 0, 0.526704, 0, -0.850049, 25.5928, 0, -28.8326)
+shape = SubResource("BoxShape3D_26xuy")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.807537, 0, -0.589817, 0, 1, 0, 0.589817, 0, 0.807537, -22.6252, 0, -23.1694)
+shape = SubResource("BoxShape3D_26xuy")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.807537, 0, -0.589817, 0, 1, 0, 0.589817, 0, 0.807537, 13.7213, 4.65831, -20.6162)
+shape = SubResource("CylinderShape3D_ikiii")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.807537, 0, -0.589817, 0, 1, 0, 0.589817, 0, 0.807537, 22.8061, 4.65831, -10.7956)
+shape = SubResource("CylinderShape3D_cbp6q")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.807537, 0, -0.589817, 0, 1, 0, 0.589817, 0, 0.807537, 19.6923, 4.65831, -16.8506)
+shape = SubResource("CylinderShape3D_26xuy")
+
 [node name="terrain" parent="Terrain/StaticBody3D" instance=ExtResource("2_udxuc")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain"]
@@ -658,6 +705,30 @@ transform = Transform3D(-2.07917, 0, -0.906681, 0, 2.26826, 0, 0.906681, 0, -2.0
 [node name="tree10" parent="trees" instance=ExtResource("9_ioo17")]
 transform = Transform3D(-2.83905, 0, -0.457894, 0, 2.87574, 0, 0.457894, 0, -2.83905, 24.0694, 0.0395137, -0.144214)
 
+[node name="tree12" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-2.83905, 0, -0.457894, 0, 2.87574, 0, 0.457894, 0, -2.83905, 34.7859, 8.41138, -0.144214)
+
+[node name="tree13" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(0.228898, 0, 3.94348, 0, 3.95012, 0, -3.94348, 0, 0.228898, 31.4051, 8.41138, 24.9659)
+
+[node name="tree14" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-0.52675, 0, -2.3835, 0, 2.44101, 0, 2.3835, 0, -0.52675, 26.5714, 8.41138, 31.558)
+
+[node name="tree15" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-2.94336, 0, 2.08348, 0, 3.60615, 0, -2.08348, 0, -2.94336, -25.7158, 8.41138, 26.3091)
+
+[node name="tree16" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(1.71308, 0, -1.27072, 0, 2.13293, 0, 1.27072, 0, 1.71308, -31.1235, 8.41138, 17.4748)
+
+[node name="tree17" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-1.75514, 0, 2.27802, 0, 2.87574, 0, -2.27802, 0, -1.75514, -31.7248, 8.41138, -18.5879)
+
+[node name="tree18" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(1.92431, 0, -3.16406, 0, 3.70327, 0, 3.16406, 0, 1.92431, -26.8781, 8.41138, -25.5724)
+
+[node name="tree19" parent="trees" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-1.43776, 0, -1.55134, 0, 2.11514, 0, 1.55134, 0, -1.43776, -14.247, 8.41138, -34.2272)
+
 [node name="round_tree" parent="trees" instance=ExtResource("10_wse8f")]
 transform = Transform3D(-1.45586, 0, -2.61104, 0, 2.98949, 0, 2.61104, 0, -1.45586, 8.09587, -0.191038, -11.0552)
 
@@ -698,6 +769,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353022, 0.18627, 0.570074)
 [node name="D20" type="Node3D" parent="Dice"]
 
 [node name="D100" type="Node3D" parent="Dice"]
+
+[node name="frogs" type="Node3D" parent="."]
+
+[node name="FROG" parent="frogs" instance=ExtResource("19_cbp6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.71337, -2.61458)
 
 [editable path="Player"]
 [editable path="Player/PlayerHead/Camera3D/UI"]

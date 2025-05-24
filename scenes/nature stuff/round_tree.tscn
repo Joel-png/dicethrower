@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://hxhq85m26wkh"]
+[gd_scene load_steps=6 format=4 uid="uid://hxhq85m26wkh"]
 
 [ext_resource type="PackedScene" uid="uid://lkrvnpvtfkl5" path="res://models/dice/round_tree.glb" id="1_w78lu"]
 [ext_resource type="Material" uid="uid://bq4u35hb43ayn" path="res://material/leaf_shader_material.tres" id="2_qlpq5"]
@@ -37,6 +37,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f6mvb")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w78lu"]
+height = 5.08691
+
 [node name="round_tree" instance=ExtResource("1_w78lu")]
 
 [node name="Icosphere" parent="." index="1"]
@@ -65,3 +68,11 @@ mesh = SubResource("ArrayMesh_lw4lh")
 
 [node name="Icosphere_008" parent="." index="9"]
 mesh = SubResource("ArrayMesh_lw4lh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="10"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203009, 2.45709, -0.340366)
+shape = SubResource("CylinderShape3D_w78lu")

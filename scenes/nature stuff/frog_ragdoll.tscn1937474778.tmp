@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgwvcx02bxitn"]
+
+[ext_resource type="Script" uid="uid://fhwhok6061h5" path="res://Scripts/frog.gd" id="1_ev4im"]
+[ext_resource type="PackedScene" uid="uid://bhvwaxw8dxbpq" path="res://scenes/nature stuff/frog.tscn" id="2_nyfcg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ensr1"]
+radius = 0.044694
+height = 0.44694
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k1ei3"]
+radius = 0.0240019
+height = 0.240019
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sw2pc"]
+
+[node name="Frog" type="CharacterBody3D"]
+
+[node name="frog" parent="." instance=ExtResource("2_nyfcg")]
+
+[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="frog/Armature_001/Skeleton3D" index="1"]
+script = ExtResource("1_ev4im")
+
+[node name="Physical Bone Bone" type="PhysicalBone3D" parent="frog/Armature_001/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(0.707107, 0.353021, -0.612679, 0, 0.866459, 0.499248, 0.707107, -0.353021, 0.612679, 0.136916, -0.111567, -0.136916)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.22347)
+body_offset = Transform3D(0.707107, 0.353021, -0.612679, 0, 0.866459, 0.499248, 0.707107, -0.353021, 0.612679, 0.136916, -0.111567, -0.136916)
+bone_name = "Bone"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="frog/Armature_001/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Bone"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ensr1")
+
+[node name="Physical Bone Bone_005" type="PhysicalBone3D" parent="frog/Armature_001/Skeleton3D/PhysicalBoneSimulator3D"]
+transform = Transform3D(0.270864, 9.12859e-08, -0.962618, -0.962618, -2.15953e-07, -0.270864, -2.32607e-07, 1, 2.93794e-08, 0.115523, 0.344243, -3.45829e-09)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.15312e-09, -6.75127e-11, 0.120009)
+body_offset = Transform3D(1, -5.00506e-10, 5.96046e-08, 5.96047e-08, 4.11866e-11, -1, 5.00549e-10, 1, 4.11831e-11, 0, 0.120009, 6.25704e-11)
+bone_name = "Bone.005"
+joint_constraints/bias = 0.3
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="frog/Armature_001/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Bone_005"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_k1ei3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sw2pc")
+
+[editable path="frog"]

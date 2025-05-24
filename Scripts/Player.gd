@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and clicking:
 			clicking = false
 			
+			
 	if is_focus:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not right_clicking:
 			right_clicking = true

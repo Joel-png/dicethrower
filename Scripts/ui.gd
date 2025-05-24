@@ -9,7 +9,7 @@ var base_material = preload("res://material/dice_material.tres")
 var edge_material = preload("res://material/dice_material_edge.tres")
 var inner_material = preload("res://material/dice_material_inner.tres")
 var droppable_rects
-var inner_is_color2 = false
+var inner_is_color2 = true
 var current_path
 
 func _ready():
