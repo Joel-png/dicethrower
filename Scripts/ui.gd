@@ -4,6 +4,7 @@ extends Control
 @onready var color2 = $Color2
 @onready var file_dialog = $LoadDialog
 @onready var save_dialog = $SaveDialog
+@onready var buttons = $Buttons
 var base_material = preload("res://material/dice_material.tres")
 var edge_material = preload("res://material/dice_material_edge.tres")
 var inner_material = preload("res://material/dice_material_inner.tres")

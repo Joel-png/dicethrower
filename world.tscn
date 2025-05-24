@@ -81,10 +81,10 @@ material = SubResource("StandardMaterial3D_f3sb7")
 size = Vector3(80, 0.1, 80)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_udxuc"]
-size = Vector3(64, 8, 8)
+size = Vector3(64, 30, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikiii"]
-size = Vector3(8, 8, 64)
+size = Vector3(8, 30, 64)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikiii"]
 albedo_color = Color(0.350088, 0.508492, 0.869463, 1)
@@ -531,7 +531,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0gi6h")
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" groups=["world"]]
 script = ExtResource("1_hiqwa")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -586,29 +586,40 @@ mesh = SubResource("PlaneMesh_cbp6q")
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164874, 2.45785, 4.84451)
 
-[node name="dice 20" parent="." instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87412, 0)
+[node name="dice_button_D4" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="0" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D4"
+scene_to_spawn = ExtResource("7_ic0uy")
+node_to_spawn = NodePath("../../../../../../Dice/D4")
 
-[node name="dice_4" parent="." instance=ExtResource("7_ic0uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18897, 1.05, -2.68205)
+[node name="dice_button_D6" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="1" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D6"
+scene_to_spawn = ExtResource("6_wse8f")
+node_to_spawn = NodePath("../../../../../../Dice/D6")
 
-[node name="dice_6" parent="." instance=ExtResource("6_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68423, 0.66412, 1.08747)
+[node name="dice_button_D8" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="2" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D8"
+scene_to_spawn = ExtResource("5_ioo17")
+node_to_spawn = NodePath("../../../../../../Dice/D8")
 
-[node name="dice_8" parent="." instance=ExtResource("5_ioo17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32503, 0.627359, -1.31568)
+[node name="dice_button_D10" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="3" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D10"
+scene_to_spawn = ExtResource("4_gbfbk")
+node_to_spawn = NodePath("../../../../../../Dice/D10")
 
-[node name="dice_10" parent="." instance=ExtResource("4_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.99207, 0.707043, -0.871388)
+[node name="dice_button_D12" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="4" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D12"
+scene_to_spawn = ExtResource("3_pkg7o")
+node_to_spawn = NodePath("../../../../../../Dice/D12")
 
-[node name="dice_12" parent="." instance=ExtResource("3_pkg7o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9293, 0.765208, 3.60421)
+[node name="dice_button_D20" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="5" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D20"
+scene_to_spawn = ExtResource("2_tlwt5")
+node_to_spawn = NodePath("../../../../../../Dice/D20")
 
-[node name="dice 21" parent="." instance=ExtResource("2_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6546, 0.844658, 2.64097)
-
-[node name="dice_11" parent="." instance=ExtResource("8_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7532, 0.707043, -1.74796)
+[node name="dice_button_D100" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="6" node_paths=PackedStringArray("node_to_spawn")]
+label_text = "D100"
+scene_to_spawn = ExtResource("8_gbfbk")
+node_to_spawn = NodePath("../../../../../../Dice/D100")
 
 [node name="trees" type="Node3D" parent="."]
 
@@ -651,7 +662,7 @@ transform = Transform3D(-2.83905, 0, -0.457894, 0, 2.87574, 0, 0.457894, 0, -2.8
 transform = Transform3D(-1.45586, 0, -2.61104, 0, 2.98949, 0, 2.61104, 0, -1.45586, 8.09587, -0.191038, -11.0552)
 
 [node name="log" parent="trees" instance=ExtResource("11_2o6r5")]
-transform = Transform3D(3.03285, 0, 3.79565, 0, 4.85851, 0, -3.79565, 0, 3.03285, 4.24649, 0.705946, -9.6871)
+transform = Transform3D(3.03285, 0, 3.79565, 0, 4.85851, 0, -3.79565, 0, 3.03285, 2.39519, 0.705946, -3.46326)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.999999, 0.000137489, 0.00158468, -0.000134174, 0.999998, -0.00210141, -0.00158496, 0.00210119, 0.999997, 0.164874, -2.76912, 4.84451)
@@ -671,3 +682,22 @@ use_mask = true
 
 [node name="campfire" parent="." instance=ExtResource("18_ikiii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353022, 0.18627, 0.570074)
+
+[node name="Dice" type="Node3D" parent="."]
+
+[node name="D4" type="Node3D" parent="Dice"]
+
+[node name="D6" type="Node3D" parent="Dice"]
+
+[node name="D8" type="Node3D" parent="Dice"]
+
+[node name="D10" type="Node3D" parent="Dice"]
+
+[node name="D12" type="Node3D" parent="Dice"]
+
+[node name="D20" type="Node3D" parent="Dice"]
+
+[node name="D100" type="Node3D" parent="Dice"]
+
+[editable path="Player"]
+[editable path="Player/PlayerHead/Camera3D/UI"]

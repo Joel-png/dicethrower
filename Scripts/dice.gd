@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		apply_torque(Vector3(0.01, 0.01, 0.01))
 	
 func play_hit_sound(body: Node):
-	print("playing sound")
+	#print("playing sound")
 	var random_sound
 	if body is Dice:
 		random_sound = sound_list[randi() % sound_list.size()]

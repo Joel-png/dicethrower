@@ -39,6 +39,8 @@ var is_focus = false
 
 @onready var UI = $PlayerHead/Camera3D/UI
 
+var dice_spawnpath
+
 #inventory
 
 var clicking = false
@@ -52,6 +54,8 @@ var zoom_to = 70.0
 @onready var debug1 = $PlayerHead/Camera3D/DebugLabel1
 
 func _ready() -> void:
+	dice_spawnpath = get_parent().dice
+	UI.buttons.dice_spawnpath = dice_spawnpath
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera_cast.set_target_position(Vector3(0, 0, -1 * GRAPPLE_RAY_MAX))
 	

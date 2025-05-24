@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c28c58lg7kw60"]
+[gd_scene load_steps=4 format=3 uid="uid://c28c58lg7kw60"]
 
 [ext_resource type="Script" uid="uid://dekm4asddfu4o" path="res://Scripts/ui.gd" id="1_b3bc3"]
+[ext_resource type="PackedScene" uid="uid://7tec4grkfk0f" path="res://dice_button.tscn" id="2_3b2b5"]
+[ext_resource type="Script" uid="uid://btn8q0m2iwbog" path="res://buttons.gd" id="2_g6l6n"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -82,6 +84,68 @@ access = 1
 root_subfolder = "saved_dice"
 filters = PackedStringArray("*.json")
 use_native_dialog = true
+
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_g6l6n")
+
+[node name="dice_button_D4" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 391.0
+offset_top = 582.0
+offset_right = 351.0
+offset_bottom = 542.0
+label_text = "null"
+
+[node name="dice_button_D6" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 441.0
+offset_top = 582.0
+offset_right = 401.0
+offset_bottom = 542.0
+label_text = "null"
+
+[node name="dice_button_D8" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 491.0
+offset_top = 582.0
+offset_right = 451.0
+offset_bottom = 542.0
+label_text = "null"
+
+[node name="dice_button_D10" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 541.0
+offset_top = 582.0
+offset_right = 501.0
+offset_bottom = 542.0
+label_text = "null"
+
+[node name="dice_button_D12" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 591.0
+offset_top = 582.0
+offset_right = 551.0
+offset_bottom = 542.0
+label_text = "null"
+
+[node name="dice_button_D20" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 641.0
+offset_top = 582.0
+offset_right = 601.0
+offset_bottom = 542.0
+label_text = "null"
+
+[node name="dice_button_D100" parent="Buttons" instance=ExtResource("2_3b2b5")]
+layout_mode = 1
+offset_left = 691.0
+offset_top = 582.0
+offset_right = 651.0
+offset_bottom = 542.0
+label_text = "null"
 
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
