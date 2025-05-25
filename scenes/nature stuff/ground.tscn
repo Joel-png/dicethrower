@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://c3n1w44x7g4jq"]
+
+[ext_resource type="PackedScene" uid="uid://cuw5y1pp5ehmm" path="res://terrain.tscn" id="1_drxf6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t57ps"]
+friction = 0.9
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_drxf6"]
+data = PackedVector3Array(8.5225, 0, -18.7131, -40, 0, 40, 12.8707, 0, -17.1957, 16.4096, 0, -16.3876, 12.8707, 0, -17.1957, -40, 0, 40, 19.747, 0, -15.7809, 16.4096, 0, -16.3876, -40, 0, 40, 19.747, 0, -15.7809, -40, 0, 40, 20.9604, 0, -14.6688, 22.4765, 0, -11.938, 20.9604, 0, -14.6688, -40, 0, 40, 22.4765, 0, -11.938, -40, 0, 40, 24.398, 0, -8.6018, 26.4207, 0, -6.9831, 24.398, 0, -8.6018, -40, 0, 40, 26.4207, 0, -6.9831, -40, 0, 40, 29.7569, 0, -6.3764, -40, 0, 40, 8.5225, 0, -18.7131, -40, 0, -40, -40, 0, 40, 40, 0, 40, 29.7569, 0, -6.3764, -40, 0, -40, 8.5225, 0, -18.7131, 6.501, 0, -21.5439, 32.4877, 0, -6.9831, 29.7569, 0, -6.3764, 40, 0, 40, 40, 0, 40, 33.8024, 0, -8.8032, 32.4877, 0, -6.9831, 33.8024, 0, -8.8032, 40, 0, 40, 34.5092, 0, -11.7354, 34.5092, 0, -14.5675, 34.5092, 0, -11.7354, 40, 0, 40, 6.7024, 0, -27.2068, -40, 0, -40, 6.501, 0, -21.5439, 6.7024, 0, -27.2068, 7.9158, 0, -30.139, -40, 0, -40, 7.9158, 0, -30.139, 10.7478, 0, -33.0712, -40, 0, -40, 13.68, 0, -34.9926, -40, 0, -40, 10.7478, 0, -33.0712, 34.5092, 0, -14.5675, 40, 0, 40, 40, 0, -40, -40, 0, -40, 13.68, 0, -34.9926, 40, 0, -40, 40, 0, -40, 34.1051, 0, -17.601, 34.5092, 0, -14.5675, 40, 0, -40, 13.68, 0, -34.9926, 17.6229, 0, -35.1952, 40, 0, -40, 33.2958, 0, -20.9372, 34.1051, 0, -17.601, 40, 0, -40, 17.6229, 0, -35.1952, 21.3645, 0, -34.8913, 40, 0, -40, 31.577, 0, -24.2747, 33.2958, 0, -20.9372, 40, 0, -40, 21.3645, 0, -34.8913, 23.3872, 0, -33.9818, 40, 0, -40, 29.2515, 0, -27.3082, 31.577, 0, -24.2747, 40, 0, -40, 23.3872, 0, -33.9818, 25.0047, 0, -32.4645, 40, 0, -40, 26.6221, 0, -30.139, 29.2515, 0, -27.3082, 40, 0, -40, 25.0047, 0, -32.4645, 26.6221, 0, -30.139)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hm1aa"]
+size = Vector3(80, 0.1, 80)
+
+[sub_resource type="Gradient" id="Gradient_gbfbk"]
+offsets = PackedFloat32Array(0.349206, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ioo17"]
+frequency = 0.1893
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h4rbi"]
+width = 4096
+height = 4096
+color_ramp = SubResource("Gradient_gbfbk")
+noise = SubResource("FastNoiseLite_ioo17")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+albedo_color = Color(0, 0.236049, 0.19502, 1)
+metallic = 0.35
+metallic_specular = 0.0
+roughness = 0.0
+roughness_texture = SubResource("NoiseTexture2D_h4rbi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pfwiu"]
+material = SubResource("StandardMaterial3D_f3sb7")
+size = Vector3(80, 0.1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vnug"]
+size = Vector3(64, 100, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ialdo"]
+size = Vector3(8, 100, 64)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2v0tg"]
+size = Vector3(8, 100, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4bja"]
+size = Vector3(8, 100, 32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikiii"]
+albedo_color = Color(0.350088, 0.508492, 0.869463, 1)
+metallic = 0.45
+metallic_specular = 0.0
+roughness = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hiuee"]
+material = SubResource("StandardMaterial3D_ikiii")
+size = Vector2(30, 30)
+
+[node name="ground" type="Node3D"]
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_t57ps")
+
+[node name="GroundCollision" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_drxf6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.18939, 0)
+shape = SubResource("BoxShape3D_hm1aa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain/StaticBody3D"]
+visible = false
+mesh = SubResource("BoxMesh_pfwiu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.3301)
+shape = SubResource("BoxShape3D_1vnug")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.3331)
+shape = SubResource("BoxShape3D_1vnug")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3596, 0, -1.97878)
+shape = SubResource("BoxShape3D_ialdo")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4489, 0, -1.97878)
+shape = SubResource("BoxShape3D_ialdo")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.630473, 0, 0.776211, 0, 1, 0, -0.776211, 0, 0.630473, -23.2784, 0, 22.3476)
+shape = SubResource("BoxShape3D_2v0tg")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(-0.803348, 0, 0.59551, 0, 1, 0, -0.59551, 0, -0.803348, 24.6518, 0, 27.0949)
+shape = SubResource("BoxShape3D_d4bja")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(-0.850049, 0, -0.526704, 0, 1, 0, 0.526704, 0, -0.850049, 25.5928, 0, -28.8326)
+shape = SubResource("BoxShape3D_d4bja")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Terrain/StaticBody3D"]
+transform = Transform3D(0.807537, 0, -0.589817, 0, 1, 0, 0.589817, 0, 0.807537, -22.6252, 0, -23.1694)
+shape = SubResource("BoxShape3D_d4bja")
+
+[node name="terrain" parent="Terrain/StaticBody3D" instance=ExtResource("1_drxf6")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9697, -0.403244, -17.3621)
+mesh = SubResource("PlaneMesh_hiuee")

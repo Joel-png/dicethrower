@@ -25,7 +25,7 @@ var ground_sound_list = [
 
 var isMoving = false
 var jump_timer = 0.0
-var jump_timer_dur = 10.0
+var jump_timer_dur = 7.0
 var twerk_timer = 0.0
 var twerk_timer_dur = 0.5
 
@@ -37,7 +37,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	jump_timer -= delta
 	if jump_timer < 0.0:
-		roll_frog(10.0, 2.0)
+		roll_frog(10.0, 3.0)
 		jump_timer = randf_range(jump_timer_dur, jump_timer_dur * 4.0)
 
 func _physics_process(delta: float) -> void:

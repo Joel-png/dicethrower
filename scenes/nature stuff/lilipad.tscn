@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqiair7ii820k"]
+
+[ext_resource type="PackedScene" uid="uid://clw0n1ccoxg30" path="res://models/nature stuff/lilipad.glb" id="1_qrdfd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qrdfd"]
+height = 1.0
+radius = 1.04248
+
+[node name="lilipad" instance=ExtResource("1_qrdfd")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_qrdfd")

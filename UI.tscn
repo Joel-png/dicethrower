@@ -170,6 +170,15 @@ offset_right = -36.0
 offset_bottom = -73.0
 label_text = "null"
 
+[node name="dice_button_D101" parent="Buttons" instance=ExtResource("2_3b2b5")]
+visible = false
+layout_mode = 1
+offset_left = -491.0
+offset_top = -33.0
+offset_right = -531.0
+offset_bottom = -73.0
+label_text = "null"
+
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="color_changed" from="Color1" to="." method="_on_color_1_color_changed"]

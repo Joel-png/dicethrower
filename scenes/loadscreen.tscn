@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://demknbytdifbc"]
+
+[ext_resource type="Script" uid="uid://baehvhxxkoeg6" path="res://loadscreen.gd" id="1_6qf8x"]
+
+[node name="loadscreen" type="Node3D"]
+script = ExtResource("1_6qf8x")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+far = 200.0

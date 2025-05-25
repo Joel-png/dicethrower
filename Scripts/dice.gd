@@ -15,7 +15,7 @@ var ground_sound_list = [
 ]
 @onready var audioStreamPlayer = $AudioStreamPlayer3D
 @export var minRandomForce = 25
-@export var maxRandomForce = 50
+@export var maxRandomForce = 75
 
 var isMoving = false
 

@@ -99,10 +99,12 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Escape"):
 		if is_focus:
+			debug1.show()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			is_focus = false
 			UI.show()
 		else:
+			debug1.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			is_focus = true
 			UI.hide()

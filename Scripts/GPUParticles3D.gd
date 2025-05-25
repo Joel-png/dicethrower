@@ -27,11 +27,7 @@ extends GPUParticles3D
 @onready var player = $"../Player"
 	
 
-func _process(delta):
-	if player != null:
-		pass
-		#position.x = player.position.x
-		#position.z = player.position.z
+func _process(_delta):
 	_update_parameters()
 	
 func _update_parameters():

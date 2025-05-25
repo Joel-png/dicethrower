@@ -41,7 +41,7 @@ func select_correct_material(texture):
 	update_material_with_texture(edge_material, texture)
 
 func update_material_with_texture(material_to_update, texture) -> void:
-	print(current_path)
+	#print(current_path)
 	material_to_update.albedo_texture = texture
 
 func update_grad_color():
@@ -77,7 +77,7 @@ func save_dice(save_name):
 		printerr("Failed to load image current path")
 		return
 	
-	print(save_name)
+	#print(save_name)
 	var image_file_name = save_name + ".png"
 	var file_path = "user://saved_dice/" + image_file_name
 	
@@ -122,7 +122,7 @@ func parse_color_string(color_string: String) -> Color:
 	# Remove parentheses and split
 	var parts = color_string.strip_edges().trim_prefix("(").trim_suffix(")").split(",")
 	if parts.size() == 4:
-		print(Color(parts[0].to_float(), parts[1].to_float(), parts[2].to_float(), parts[3].to_float()))
+		#print(Color(parts[0].to_float(), parts[1].to_float(), parts[2].to_float(), parts[3].to_float()))
 		return Color(parts[0].to_float(), parts[1].to_float(), parts[2].to_float(), parts[3].to_float())
 	return Color.WHITE
 
@@ -151,7 +151,7 @@ func _on_load_pressed() -> void:
 func load_json_to_dic(path):
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		push_error("Failed to open file.")
+		print("Failed to open file.")
 		return
 
 	var content := file.get_as_text()
@@ -176,7 +176,7 @@ func read_text_file(file_path: String) -> String:
 func _on_file_dialog_file_selected(path: String) -> void:
 	load_json_to_dic(path)
 
-func _on_save_dialog_file_selected(path: String) -> void:
+func _on_save_dialog_file_selected(_path: String) -> void:
 	var file_name = save_dialog.current_file.get_file()
 	var save_name = file_name.get_basename()
 	save_dice(save_name)

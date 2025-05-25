@@ -13,7 +13,13 @@ config_version=5
 config/name="Dicethrower"
 run/main_scene="uid://mvxbl6j3mknf"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+config/icon="uid://dwbdwfi34ism"
+config/windows_native_icon="res://images/diceicon.ico"
+boot_splash/minimum_display_time=2000
+config/main_scene="uid://mvxbl6j3mknf"
+config/show_image=false
+config/minimum_display_time=2000
 
 [display]
 

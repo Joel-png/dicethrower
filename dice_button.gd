@@ -24,7 +24,7 @@ func spawn_scene():
 	var instance = scene_to_spawn.instantiate()
 	if node_to_spawn != null:
 		node_to_spawn.add_child(instance)
-		print(player.position)
+		#print(player.position)
 		instance.position = Vector3(player.position.x, player.position.y + 10.0, player.position.z)
 	
 func delete_scene():
@@ -34,9 +34,9 @@ func delete_scene():
 		first_child.queue_free()
 	
 func _on_plus_button_pressed() -> void:
-	print("+" + label_text)
+	#print("+" + label_text)
 	spawn_scene()
 
 func _on_minus_button_pressed() -> void:
-	print("-" + label_text)
+	#print("-" + label_text)
 	delete_scene()
