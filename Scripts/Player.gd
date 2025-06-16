@@ -177,6 +177,8 @@ func get_what_look_at() -> Vector3:
 func looking_at_dice():
 	if looking_at() is Dice:
 		looking_at().roll_dice()
+	if looking_at() is Frog:
+		looking_at().roll_frog(5.0, 2.0)
 		
 func looking_at():
 	if camera_cast.get_collider():

@@ -507,9 +507,9 @@ shader_parameter/player_position = Vector2(0.164874, 4.84451)
 shader_parameter/distance_cut_off = 122.045
 shader_parameter/distance_length = 8.565
 shader_parameter/distance_start = -20.625
-shader_parameter/instance_rows = 10.0
+shader_parameter/instance_rows = 40.0
 shader_parameter/instance_rot_randomize = 55.205
-shader_parameter/instance_spacing = 4.8
+shader_parameter/instance_spacing = 1.13
 shader_parameter/instance_scale_x = 1.0
 shader_parameter/instance_scale_y = 1.0
 shader_parameter/instance_scale_z = 1.0
@@ -520,7 +520,7 @@ shader_parameter/instance_scale_max = 1.2
 shader_parameter/_coverage_altitude = 9.94
 shader_parameter/_coverage_range = 100.0
 shader_parameter/_slope_coverage = 0.5
-shader_parameter/clumping_strength = 0.0
+shader_parameter/clumping_strength = 72.255
 shader_parameter/terrain_normal_basis = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/height_offset = 0.0
 shader_parameter/size_difference_of_world = 2.0
@@ -614,6 +614,9 @@ directional_shadow_blend_splits = true
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164874, 2.45785, 4.84451)
+
+[node name="Buttons" parent="Player/PlayerHead/Camera3D/UI" index="10" node_paths=PackedStringArray("node_to_delete")]
+node_to_delete = NodePath("../../../../../Dice")
 
 [node name="dice_button_D4" parent="Player/PlayerHead/Camera3D/UI/Buttons" index="0" node_paths=PackedStringArray("node_to_spawn")]
 label_text = "D4"
@@ -741,12 +744,12 @@ use_mask = true
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.999999, 0.000137489, 0.00158468, -0.000134174, 0.999998, -0.00210141, -0.00158496, 0.00210119, 0.999997, 0.164874, -2.76912, 4.84451)
 custom_aabb = AABB(-50, -50, -50, 100, 100, 100)
-amount = 100
+amount = 1600
 lifetime = 0.01
 process_material = SubResource("ShaderMaterial_bc84e")
 draw_pass_1 = SubResource("ArrayMesh_wukud")
 script = ExtResource("13_hiqwa")
-num_particles = 100
+num_particles = 1600
 wind_angle = 72.0
 wind_speed = 0.186
 wind_strength = 0.193

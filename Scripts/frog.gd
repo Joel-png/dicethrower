@@ -38,13 +38,13 @@ func _process(delta: float) -> void:
 	jump_timer -= delta
 	if jump_timer < 0.0:
 		roll_frog(10.0, 3.0)
-		jump_timer = randf_range(jump_timer_dur, jump_timer_dur * 4.0)
+		
 
 func _physics_process(delta: float) -> void:
 	isMoving = linear_velocity.length() > 0.1 + delta * 0
 	if !isMoving:
 		if top.global_position.y <= bottom.global_position.y:
-			jump_timer = randf_range(jump_timer_dur, jump_timer_dur * 4.0)
+			#jump_timer = randf_range(jump_timer_dur, jump_timer_dur * 4.0)
 			roll_frog(1.0, 0.5)
 		else:
 			twerk_timer += delta
@@ -68,6 +68,7 @@ func _physics_process(delta: float) -> void:
 		##roll_dice()
 
 func roll_frog(torque_intensity, force_intensity):
+	jump_timer = randf_range(jump_timer_dur, jump_timer_dur * 4.0)
 	if isMoving: 
 		pass
 		#return

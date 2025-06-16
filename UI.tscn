@@ -171,13 +171,20 @@ offset_bottom = -73.0
 label_text = "null"
 
 [node name="dice_button_D101" parent="Buttons" instance=ExtResource("2_3b2b5")]
-visible = false
 layout_mode = 1
 offset_left = -491.0
 offset_top = -33.0
 offset_right = -531.0
 offset_bottom = -73.0
 label_text = "null"
+
+[node name="Clearbutton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -65.0
+offset_top = -189.0
+offset_right = 19.0
+offset_bottom = -158.0
+text = "Clear dice"
 
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
@@ -188,3 +195,4 @@ label_text = "null"
 [connection signal="file_selected" from="LoadDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="confirmed" from="SaveDialog" to="." method="_on_save_dialog_confirmed"]
 [connection signal="file_selected" from="SaveDialog" to="." method="_on_save_dialog_file_selected"]
+[connection signal="pressed" from="Buttons/Clearbutton" to="Buttons" method="_on_clearbutton_pressed"]
